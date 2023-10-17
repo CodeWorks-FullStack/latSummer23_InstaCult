@@ -36,4 +36,10 @@ public class CultsService
       List<Cult> filtered = cults.FindAll(cult => cult.InvitationRequired == false || cult.LeaderId == userId);
       return filtered;
     }
+
+    internal void UpdateCultMemberCount(Cult cult)
+    {
+      // NOTE this is just for the count, it doesn't take in a user id, so would not be good to allow other edits to happen.
+      _repo.UpdateCult(cult);
+    }
 }

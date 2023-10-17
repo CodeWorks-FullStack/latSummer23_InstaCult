@@ -13,12 +13,14 @@ namespace server.Controllers;
 public class CultsController : ControllerBase
 {
     private readonly CultsService _cultService;
+    private readonly CultMembersService _cultMembersService;
     private readonly Auth0Provider _auth;
 
-    public CultsController(CultsService cultService, Auth0Provider auth)
+    public CultsController(CultsService cultService, Auth0Provider auth, CultMembersService cultMembersService)
     {
         _cultService = cultService;
         _auth = auth;
+        _cultMembersService = cultMembersService;
     }
 
     [HttpGet]
@@ -45,6 +47,19 @@ public class CultsController : ControllerBase
         return Ok(cult);
       }
      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet("{cultId}/cultMembers")]
+    public ActionResult<List<Cultist>> GetCultistsByCultId(int cultId){
+      try
+      {
+        List<Cultist> cultists = _cultMembersService.GetCultistsByCultId(cultId);
+        return cultists;
+      }
+      catch (Exception e)
       {
         return BadRequest(e.Message);
       }

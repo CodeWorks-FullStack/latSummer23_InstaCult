@@ -71,4 +71,21 @@ public class CultsRepository
       }).ToList();
       return cults;
     }
+
+    internal void UpdateCult(Cult cult)
+    {
+      string sql = @"
+      UPDATE cults
+      SET
+      name = @name,
+      coverImg = @coverImg,
+      fee = @fee,
+      description = @description,
+      memberCount = @memberCount,
+      invitationRequired = @invitationRequired
+      WHERE id = @id;
+      ;";
+      // add select in if you wanted to return the cult back out
+      _db.Execute(sql, cult);
+    }
 }
