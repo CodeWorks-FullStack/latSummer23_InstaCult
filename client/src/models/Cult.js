@@ -10,6 +10,7 @@ export class Cult{
     this.coverImg = data.coverImg
     this.memberCount = data.memberCount
     this.invitationRequired = data.invitationRequired
+    this.leaderId = data.leaderId
     this.leader = data.leader
   }
 }

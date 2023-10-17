@@ -31,6 +31,7 @@
 import { onMounted, ref } from 'vue';
 import Pop from '../utils/Pop.js';
 import { cultsService } from '../services/CultsService.js';
+import { AppState } from '../AppState.js';
 
 
   const cultData = ref({})
@@ -47,6 +48,8 @@ import { cultsService } from '../services/CultsService.js';
   }
 
   async function resetForm(){
+    // NOTE pre-populate form with data
+    // cultData.value = AppState.activeCult || {}
     cultData.value = {fee: 25}
   }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="mb-2">
     <Navbar />
   </header>
   <main>
